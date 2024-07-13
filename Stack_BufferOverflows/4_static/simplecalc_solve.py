@@ -38,7 +38,7 @@ continue
 # NX:       NX enabled
 # PIE:      No PIE (0x400000)
 
-context.log_level = 'DEBUG'
+# context.log_level = 'DEBUG'
 
 popRAX = 0x44db34
 popRDX = 0x437a85
